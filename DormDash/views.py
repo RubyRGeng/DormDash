@@ -9,4 +9,4 @@ def index(request):
     return HttpResponse("Homepage unimplemented")
 
 def signup(request):
-    
+    return HttpResponse("askfjhjkdfhsdjkfksdnfkjsdnfjk")
