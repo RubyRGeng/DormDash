@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'DormDash.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'custom' / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',
