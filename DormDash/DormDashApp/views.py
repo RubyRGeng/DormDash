@@ -3,6 +3,7 @@ from datetime import datetime
 from accounts.forms import (EditProfileForm, ProfileForm)
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -26,3 +27,11 @@ def edit_profile(request):
         args['form'] = form
         args['profile_form'] = profile_form
         return render(request, 'accounts/edit_profile.html', args)
+
+def createaccount(request):
+    #pull data from DB
+    #Transform
+    #Send Email
+    return render(request, 'createaccount.html')
+def login(request):
+    return render(request, 'login.html')
