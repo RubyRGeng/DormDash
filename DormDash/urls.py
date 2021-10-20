@@ -19,6 +19,7 @@ from DormDash import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', include('login.urls')),
+    path('login/', include('DormDashApp.urls')),
     path('',views.index,name="homepage"),
+    path('DormDashApp/', include('DormDashApp.urls'))
 ]
