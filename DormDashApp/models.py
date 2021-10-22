@@ -10,11 +10,16 @@ USER_TYPE = (
 )
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(max_length=255)
+    username = None
+    email = models.EmailField(('email address'), unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    #email = models.EmailField(max_length=255)
     email_verified = models.BooleanField(default=False)
     activation_code = models.CharField(max_length=100, null=True, blank=True)
     is_active = models.BooleanField(default=False)
-    password = models.IntegerField(max_length=28)
+    password = models.IntegerField()
     phone_number = models.CharField(max_length=15)
     #user_type = models.CharField(choices=USER_TYPE, max_length=10)
     is_admin = models.BooleanField(default=False)
