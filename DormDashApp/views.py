@@ -15,3 +15,8 @@ def login(request):
     #Transform
     #Send Email
     return render(request, 'login.html')
+def restaurant_list(request):
+    #pull data from DB
+    #Transform
+    #Send Email
+    return render(request, 'restaurant_list.html')
