@@ -27,18 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'DormDashApp.User'
+#AUTH_USER_MODEL = 'DormDashApp.User'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'DormDashApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'DormDashApp'
+    
 ]
 
 MIDDLEWARE = [
