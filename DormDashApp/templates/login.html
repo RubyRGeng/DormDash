@@ -19,12 +19,15 @@
       <h6>Please Enter Your Email and Password</h6>
       <form method="POST" action="">
         {% csrf_token %}
-      <input type="text" class="form-control" placeholder="Email" name="email" style="width:300px">
+      <input type="text" class="form-control" placeholder="Username" name="username" style="width:300px">
     </br>
       <input type="password" class="form-control" placeholder="Password" name="password" style="width:300px">
     </br>
       <button type="submit" class="btn btn-primary">Log In</button>
       </form>
+      {% for message in messages %}
+					<p id="messages">{{message}}</p>
+			{% endfor %}
   </br>
 </br>
   <p>Or, <a href="createaccount">Click here to create an account</a></p>
