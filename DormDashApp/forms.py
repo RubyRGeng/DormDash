@@ -3,6 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from models import User, Driver, Customer
 
+class loginForm(forms.Form):
+    email = forms.EmailField(required=True)
+    password = forms.IntegerField()
+
 class CustomerSignUpForm(UserCreationForm):
     email = forms.EmailField()
     phone_number = forms.CharField(max_length = 15)
