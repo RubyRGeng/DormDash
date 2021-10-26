@@ -17,11 +17,14 @@
 
     <td valign="center" style="width: 300px">
       <h6>Please Enter Your Email and Password</h6>
-      <input type="text" class="form-control" placeholder="Email" style="width:300px">
+      <form method="POST" action="">
+        {% csrf_token %}
+      <input type="text" class="form-control" placeholder="Email" name="email" style="width:300px">
     </br>
-      <input type="text" class="form-control" placeholder="Password" style="width:300px">
+      <input type="password" class="form-control" placeholder="Password" name="password" style="width:300px">
     </br>
-      <button type="button" class="btn btn-primary">Log In</button>
+      <button type="submit" class="btn btn-primary">Log In</button>
+      </form>
   </br>
 </br>
   <p>Or, <a href="createaccount">Click here to create an account</a></p>
