@@ -1,3 +1,22 @@
+<H3>Create Account</H3>
+
+<form method = 'POST' action="">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="Create User">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -23,7 +42,7 @@
     </br>
     <input type="text" class="form-control" placeholder="Phone Number" style="width:300px">
     </br>
-      <button onClick="window.location.href='/login';" type="button" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary">Submit</button>
   </br>
 </br>
 <p>Or, click <a href="javascript:history.back()">here</a> to login to an existing account</p>
@@ -33,3 +52,4 @@
 
 </body>
 </html>
+-->
