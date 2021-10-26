@@ -1,8 +1,20 @@
+from django.forms import ModelForm
 from django import forms
+from . import models
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from django.db import transaction
-from models import User, Driver, Customer
+#from django.db import transaction
+from django.contrib.auth.models import User
+from models import forms
 
+
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields =['email','phone_number', 'password1', 'password2']
+
+'''
 class CustomerSignUpForm(UserCreationForm):
     email = forms.EmailField()
     phone_number = forms.CharField(max_length = 15)
@@ -26,4 +38,4 @@ class DriverSignUpForm(UserCreationForm):
 
 class EditProfileForm():
     ()
-
+'''
