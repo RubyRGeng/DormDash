@@ -1,18 +1,17 @@
 from django.forms import ModelForm
-from django import forms
+#from django import forms
 from . import models
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 #from django.db import transaction
 from django.contrib.auth.models import User
-from models import forms
 
 
 
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields =['email','phone_number', 'password1', 'password2']
+        fields =['email', 'password1', 'password2']
 
 '''
 class CustomerSignUpForm(UserCreationForm):
