@@ -25,7 +25,6 @@ def createaccount(request):
             form.save()
     context = {'form':form}
     return render(request, 'createaccount.html', context)
-
 def loginUser(request):
     #pull data from DB
     #Transform

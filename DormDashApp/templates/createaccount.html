@@ -8,14 +8,6 @@
 
 
 
-
-
-
-
-
-
-
-
 <!--
 <html>
 <head>
@@ -35,17 +27,23 @@
   <tr >
 
     <td valign="center" style="width: 300px">
-      <h6>Please Enter an Email and  a Password</h6>
-      <input type="text" class="form-control" placeholder="Email" style="width:300px">
+      <h6>Please Enter an Email and Password</h6>
+      <form method="POST" action="">
+        {% csrf_token %}
+      <input type="text" class="form-control" placeholder="Email" name="email" style="width:300px">
     </br>
-      <input type="text" class="form-control" placeholder="Password" style="width:300px">
+      <input type="password" class="form-control" placeholder="Password1" name="password1" style="width:300px">
     </br>
-    <input type="text" class="form-control" placeholder="Phone Number" style="width:300px">
+    <input type="password" class="form-control" placeholder="Password2" name="password2" style="width:300px">
     </br>
-      <button type="button" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
+      {% for message in messages %}
+					<p id="messages">{{message}}</p>
+			{% endfor %}
   </br>
 </br>
-<p>Or, click <a href="javascript:history.back()">here</a> to login to an existing account</p>
+  <p>Or, <a href="/login">Click here to login to an existing account</a></p>
     </td>
   </tr>
 </table>
@@ -53,3 +51,8 @@
 </body>
 </html>
 -->
+
+
+
+
+
