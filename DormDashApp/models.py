@@ -4,11 +4,11 @@ from django.db.models.fields import NullBooleanField
 from django.db import models
 
 
+
 class Customer(models.Model):
-    email = models.EmailField(('email address'), unique=True)
+    email = models.CharField(max_length=200, null=True)    
     password = models.IntegerField()
     phone_number = models.CharField(max_length=15)
-    is_login = models.BooleanField(default=False)
     address = models.TextField()
 
     def get_email(self):
@@ -21,10 +21,9 @@ class Customer(models.Model):
         return self.is_login
 
 class Driver(models.Model):
-    email = models.EmailField(('email address'), unique=True)
+    email = models.CharField(max_length=200, null=True)
     password = models.IntegerField()
     phone_number = models.CharField(max_length=15)
-    is_login = models.BooleanField(default=False)
     delivery_address = models.TextField()
 
     def get_email(self):
@@ -35,7 +34,7 @@ class Driver(models.Model):
 
     def get_is_login(self):
         return self.is_login
-        
+
 '''
 # Create your models here.
 USER_TYPE = (
