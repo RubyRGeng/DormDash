@@ -1,3 +1,4 @@
+from django.db.models.fields import EmailField
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
@@ -23,6 +24,8 @@ def createaccount(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect("/login")
+
     context = {'form':form}
     return render(request, 'createaccount.html', context)
 def loginUser(request):
