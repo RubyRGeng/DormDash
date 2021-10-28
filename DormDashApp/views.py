@@ -8,6 +8,7 @@ from .forms import CreateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .forms import UpdateUserForm, UpdateProfileForm
 
 from .models import *
 # Create your views here.
@@ -58,3 +59,7 @@ def restaurant_list(request):
     #Transform
     #Send Email
     return render(request, 'restaurant_list.html')
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
