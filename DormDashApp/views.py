@@ -1,9 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 
 from .forms import CreateUserForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+from .models import *
 # Create your views here.
 # request -> response
 # request handle
@@ -21,11 +26,31 @@ def createaccount(request):
     context = {'form':form}
     return render(request, 'createaccount.html', context)
 
-def login(request):
+def loginUser(request):
     #pull data from DB
     #Transform
     #Send Email
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("restaurant_list")
+        else:
+            messages.info(request, "Username or Password is incorrect")
+
     return render(request, 'login.html')
+
+#logout button: <a href="{% url 'logout' %}">Logout</a>
+
+def logoutUser(request):
+    logout(request)
+    return redirect("")
+
+@login_required(login_url='login')
 def restaurant_list(request):
     #pull data from DB
     #Transform
