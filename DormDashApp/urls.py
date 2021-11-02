@@ -13,6 +13,8 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     path('login/', views.loginUser, name="login"),
     path('profile/', profile, name='users-profile'),
+    path('driverorders/',views.driverorders, name='driverorders'),
+    path('orderdetails/',views.orderdetails, name='orderdetails')
 
 
 ]
