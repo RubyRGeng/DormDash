@@ -51,7 +51,7 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect("")
+    return redirect("/login")
 
 def driverorders(request):
     return render(request, 'driverorders.html')
