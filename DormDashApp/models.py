@@ -4,12 +4,31 @@ from django.db.models.fields import NullBooleanField
 from django.db import models
 from django.contrib.auth.models import User
 
+class menuItem(models.Model):
+    pass
+
+class Order(models.Model):
+    resteraunt = models.CharField(max_length=100, null=True)
+    items = models.ManyToManyField(menuItem)
+    user = models.CharField(max_length = 100, null=True)
+    
+    def get_user(self):
+        return NullBooleanField
+    def get_items(self):
+        return NullBooleanField
+    def get_resteraunt(self):
+        return NullBooleanField
+
 
 class Customer(models.Model):
-    email = models.CharField(max_length=200, null=True)    
+    email = models.CharField(max_length=200, null=True)  
+    #username = models.CharField(max_length=200, null=True)  
     password = models.IntegerField()
     phone_number = models.CharField(max_length=15)
     address = models.TextField()
+
+    #def get_username(self):
+        #return NullBooleanField
 
     def get_email(self):
         return NullBooleanField
