@@ -53,6 +53,11 @@ def logoutUser(request):
     logout(request)
     return redirect("")
 
+def driverorders(request):
+    return render(request, 'driverorders.html')
+def orderdetails(request):
+    return render(request, 'orderdetails.html')
+
 @login_required(login_url='login')
 def restaurant_list(request):
     #pull data from DB
