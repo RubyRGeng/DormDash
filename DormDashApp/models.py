@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db.models.fields import NullBooleanField
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 class Customer(models.Model):
@@ -35,6 +35,15 @@ class Driver(models.Model):
     def get_is_login(self):
         return self.is_login
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    phone_number = models.CharField(max_length=15)
+    address = models.TextField()
+
+    def __str__(self):
+        return self.user.username
 '''
 # Create your models here.
 USER_TYPE = (
