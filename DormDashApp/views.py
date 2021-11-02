@@ -51,7 +51,7 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect("")
+    return redirect("/login")
 
 @login_required(login_url='login')
 def restaurant_list(request):
