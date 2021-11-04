@@ -4,23 +4,20 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#" style="padding-left: 2%;">
     {% load static %} <img src="{% static "DormDashApp/media/DD.PNG" %}" alt="DormDash" />   
      </a>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">View Restaurants</a>
+            <a class="nav-link" href="restaurant_list.html">View Restaurants</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Your Orders</a>
+            <a class="nav-link" href="profile.html">View Profile</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
         </ul>
       </div>
