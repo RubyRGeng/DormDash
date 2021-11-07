@@ -60,9 +60,6 @@ def orderdetails(request):
 
 @login_required(login_url='login')
 def restaurant_list(request):
-    #pull data from DB
-    #Transform
-    #Send Email
     return render(request, 'restaurant_list.html')
 
 @login_required
