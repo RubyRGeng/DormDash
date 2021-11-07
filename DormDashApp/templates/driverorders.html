@@ -18,7 +18,9 @@
       <h6>Select A Order to Deliver For!</h6>
       <form method="POST" action="">
         {% csrf_token %}
-      <input type="text" class="form-control" placeholder="order" name="order" style="width:300px">
+      <select name="orders" id="order select">
+  
+      </select>
     </br>
       <button type="submit" class="btn btn-primary">Select Order</button>
       </form>
@@ -32,4 +34,10 @@
 </html>
 
 
+<script type="text/javascript">
+  var selectobject=document.getElementById("order select")
+  for (var i=0; i<selectobject.length; i++){
+  alert(selectobject.options[i].text+" "+selectobject.options[i].value)
+  }
   
+  </script>
