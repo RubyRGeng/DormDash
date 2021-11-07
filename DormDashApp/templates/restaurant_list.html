@@ -2,4 +2,10 @@
   {% block content %}
 This is the list of restaurants page
 
+<form enctype="multipart/form-data" method="POST" action="">
+  {{ form.as_p }}
+</form>
+
+<img src="{{ post.model_pic.url }}" alt="{{ post.title }}" />
+
 {% endblock %}

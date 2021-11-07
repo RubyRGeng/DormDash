@@ -63,6 +63,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Restaurant(models.Model):
+    name = models.TextField()
+    address = models.TextField()
+    restaurant_pic = models.ImageField(upload_to='uploads/restaurant_pics/')
+
+    def upload_image(self, filename):
+        return 'restaurant/{}/{}'.format(self.title, filename)
+
+
 '''
 # Create your models here.
 USER_TYPE = (
