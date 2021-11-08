@@ -67,7 +67,13 @@ class Profile(models.Model):
 class Restaurant(models.Model):
     name = models.TextField()
     address = models.TextField()
-    restaurant_pic = models.ImageField(upload_to='uploads/restaurant_pics/')
+    restaurant_pic = models.ImageField(upload_to='uploads/restaurant_list/')
+
+    def get_name(self):
+        return self.name
+
+    def get_fields(self):
+        return [(field.name, getattr(self,field.name)) for field in Restaurant._meta.fields]
 
     def upload_image(self, filename):
         return 'restaurant/{}/{}'.format(self.title, filename)

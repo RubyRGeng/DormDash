@@ -2,10 +2,18 @@
   {% block content %}
 This is the list of restaurants page
 
-<form enctype="multipart/form-data" method="POST" action="">
-  {{ form.as_p }}
-</form>
 
-<img src="{{ post.model_pic.url }}" alt="{{ post.title }}" />
+{% for entry in restaurantlist %}
+  <br>
+  {% for name, value in entry.get_fields %}
+    {% if name != "restaurant_pic" %}
+     {{name}} : {{value}}
+     <br>
+    {% else %}
+    <img src="{{ value.url }}">
+     <br>
+    {% endif %}
+  {% endfor %}
+{% endfor %}  
 
 {% endblock %}
