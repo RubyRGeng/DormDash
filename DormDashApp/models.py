@@ -67,7 +67,7 @@ class Profile(models.Model):
 class Restaurant(models.Model):
     name = models.TextField()
     address = models.TextField()
-    restaurant_pic = models.ImageField(upload_to='upload/restaurant_list')
+    restaurant_pic = models.ImageField(upload_to='')
 
     def get_name(self):
         return self.name
