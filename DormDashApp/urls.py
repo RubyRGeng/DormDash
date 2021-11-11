@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import profile
+from .views import profile, restaurant_list
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from DormDashApp.views import logoutUser
 
@@ -14,7 +14,7 @@ urlpatterns = [
     path('login/', views.loginUser, name="login"),
     path('profile/', profile, name='users-profile'),
     path('driverorders/',views.driverorders, name='driverorders'),
-    path('orderdetails/',views.orderdetails, name='orderdetails')
+    path('orderdetails/',views.orderdetails, name='orderdetails'),
 
 
 ]

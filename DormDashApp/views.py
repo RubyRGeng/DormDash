@@ -48,19 +48,22 @@ def loginUser(request):
     return render(request, 'login.html')
 
 #logout button: <a href="{% url 'logout' %}">Logout</a>
-
 def logoutUser(request):
     logout(request)
     return redirect("/login")
 
 def driverorders(request):
     return render(request, 'driverorders.html')
+
 def orderdetails(request):
     return render(request, 'orderdetails.html')
 
 @login_required(login_url='login')
 def restaurant_list(request):
-    return render(request, 'restaurant_list.html')
+    restaurantlist = Restaurant.objects.all()
+    for x in restaurantlist:
+        print(x.get_name)
+    return render(request, 'restaurant_list.html',{'restaurantlist':restaurantlist })
 
 @login_required
 def profile(request):
