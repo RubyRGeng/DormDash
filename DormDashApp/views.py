@@ -4,11 +4,11 @@ from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 
-from .forms import CreateUserForm
+from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UpdateUserForm, UpdateProfileForm
+from .forms import UpdateUserForm
 
 from .models import *
 # Create your views here.
@@ -17,18 +17,19 @@ from .models import *
 # action
 
 def createaccount(request):
-    form = CreateUserForm()
+    form = CustomerSignUpForm()
     #pull data from DB
     #Transform
     #Send Email
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
+        form = CustomerSignUpForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("/login")
 
     context = {'form':form}
     return render(request, 'createaccount.html', context)
+    
 def loginUser(request):
     #pull data from DB
     #Transform
@@ -51,6 +52,7 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect("/login")
+    
 @login_required(login_url='login')
 def driverorders(request):
     return render(request, 'driverorders.html')

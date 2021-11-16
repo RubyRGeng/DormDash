@@ -1,18 +1,9 @@
-from django.forms import ModelForm
 from django import forms
-from . import models
-from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-#from django.db import transaction
-from django.contrib.auth.models import User
-from .models import Profile
+from django.db import transaction
 
+from DormDashApp.models import Customer, Restaurant, User
 
-
-class CreateUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields =['username','email', 'password1', 'password2']
 
 class UpdateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=100,
@@ -29,22 +20,25 @@ class UpdateUserForm(forms.ModelForm):
         fields = ['username', 'email','phone_number']
 
 
-class UpdateProfileForm(forms.ModelForm):
-    address = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
 
-    class Meta:
-        model = Profile
-        fields = ['address']
-
-'''
 class CustomerSignUpForm(UserCreationForm):
-    email = forms.EmailField()
-    phone_number = forms.CharField(max_length = 15)
-    delivery_address = forms.CharField()
+
+    email = forms.EmailField(required=True,
+                                    widget=forms.TextInput(attrs={'class': 'form-control'})
+                                    )
+
+    phone_number = forms.CharField(max_length=100,
+                                    required=True,
+                                    widget=forms.TextInput(attrs={'class': 'form-control'})
+                                    )
+    
+    address = forms.CharField(max_length=250,
+                                    required=True,
+                                    widget=forms.TextInput(attrs={'class': 'form-control'})
+                                    )
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['email','phone_number','delivery_address','password1','password2']
 
     @transaction.atomic
     def save(self):
@@ -52,12 +46,21 @@ class CustomerSignUpForm(UserCreationForm):
         user.is_customer = True
         user.save()
         customer = Customer.objects.create(user=user)
+        customer.email.add(*self.cleaned_data.get('email'))
+        customer.phone_number.add(*self.cleaned_data.get('phone_number'))
+        customer.address.add(*self.cleaned_data.get('address'))
         return user
 
+
 class DriverSignUpForm(UserCreationForm):
-    ()
 
+    class Meta(UserCreationForm.Meta):
+        model = User
 
-class EditProfileForm():
-    ()
-'''
+    def save(self, commit = True):
+        user = super().save(commit=False)
+        user.is_driver = True
+        if commit:
+            user.save()
+        return user
+        

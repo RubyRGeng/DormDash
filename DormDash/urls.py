@@ -18,10 +18,16 @@ from django.urls import path, include
 from django.conf import settings 
 from django.conf.urls.static import static
 
+from DormDashApp.views import customers, DormDashApp, drivers
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('DormDashApp.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', DormDashApp.SignUpView.as_view(), name='signup'),
+    path('accounts/signup/customer/', customers.CustomerSignUpView.as_view(), name='customer_signup'),
+    path('accounts/signup/driver/', drivers.DriverSignUpView.as_view(), name='driver_signup'),
 
 ]
 if settings.DEBUG:
