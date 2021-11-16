@@ -15,7 +15,7 @@ from DormDashApp.models import User
 class DriverSignUpView(CreateView):
     model = User
     form_class = DriverSignUpForm
-    template_name = 'registration/signup_form.html'
+    template_name = 'createdriver.html'
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'driver'
@@ -24,7 +24,7 @@ class DriverSignUpView(CreateView):
     def form_valid(self,form):
         user = form.save()
         login(self.request, user)
-        return redirect('driver:driverorders')
+        return redirect('driverorders')
 
 
 @login_required

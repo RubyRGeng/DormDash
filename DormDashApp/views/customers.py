@@ -8,7 +8,7 @@ from DormDashApp.models import User
 class CustomerSignUpView(CreateView):
     model = User
     form_class = CustomerSignUpForm
-    template_name = 'registration/signup_form.html'
+    template_name = 'createcustomer.html'
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'customer'
@@ -17,5 +17,5 @@ class CustomerSignUpView(CreateView):
     def form_valid(self,form):
         user = form.save()
         login(self.request, user)
-        return redirect('customer:restaurant_list')
+        return redirect('restaurant_list')
         
